@@ -156,7 +156,7 @@ class TerminalWriter(object):
              hasattr(file, "write") and hasattr(file, "flush")):
             file = WriteFile(file, encoding=encoding)
         if colorama:
-            file = colorama.AnsiToWin32(file).stream
+            file = colorama.AnsiToWin32(file, convert=True, strip=True).stream
         self.encoding = encoding or getattr(file, 'encoding', "utf-8")
         self._file = file
         self.hasmarkup = should_do_markup(file)
